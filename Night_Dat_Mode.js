@@ -1,16 +1,11 @@
-function LinkSetColor(color) {
-    var alist = document.querySelectorAll('a');
-    var i = 0;
-    while (i < alist.length) {
-        alist[i].style.color = color;
-        i++;
+var Links = {
+    setColor: function (color) {
+        $('a').css('color', color);
     }
 }
-function BodySetColor(color) {
-    document.querySelector('body').style.backgroundColor = color;
-}
-function SetColor(color) {
-    document.querySelector('body').style.color = color;
+var Body = {
+    SetColor: function(color) { $('body').css('color', color); }, //Text Color
+    SetBackgroundColor: function(color) { $('body').css('backgroundColor', color); } //Background Color
 }
 function BorderColorPowderblue(tag) {
     document.querySelector(tag).style.borderColor = 'powderblue';
@@ -20,18 +15,18 @@ function BorderColorBlack(tag) {
 }
 function NightDayHandler(self) {
     if (self.value === 'Night') {
-        BodySetColor('black');
-        SetColor('white');
+        Body.SetColor('white');
+        Body.SetBackgroundColor('black');
         self.value = 'Day';
-        LinkSetColor('powderblue');
+        Links.setColor('powderblue');
         BorderColorPowderblue('h1');
         BorderColorPowderblue('ol');
     }
     else {
-        BodySetColor('white');
-        SetColor('black');
+        Body.SetColor('black');
+        Body.SetBackgroundColor('white');
         self.value = 'Night';
-        LinkSetColor('black');
+        Links.setColor('black');
         BorderColorBlack('h1');
         BorderColorBlack('ol');
     }
